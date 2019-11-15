@@ -17,7 +17,7 @@ class LambdaBaseSsmImpl(LambdaBaseSsm):
         return event.update({})
 
 
-class TestLambdaBase(TestCase):
+class TestLambdaBaseSsm(TestCase):
 
     @classmethod
     def setUpClass(cls) -> None:

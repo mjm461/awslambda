@@ -16,7 +16,7 @@ class LambdaBaseEnvImpl(LambdaBaseEnv):
         return event.update({})
 
 
-class TestLambdaBase(TestCase):
+class TestLambdaBaseEnv(TestCase):
 
     @classmethod
     def setUpClass(cls) -> None:
@@ -27,16 +27,19 @@ class TestLambdaBase(TestCase):
 
     def test_parameter_not_found(self) -> None:
         with self.assertRaises(KeyError):
-            lambda_base_env_impl = LambdaBaseEnvImpl(set([]))
+            lambda_base_env_impl = LambdaBaseEnvImpl({})
             lambda_base_env_impl.get_parameter('param1')
 
     def test_parameter_default(self) -> None:
-        lambda_base_env_impl = LambdaBaseEnvImpl(set([]))
+        lambda_base_env_impl = LambdaBaseEnvImpl({})
         self.assertEqual('value', lambda_base_env_impl.get_parameter('param', 'value'))
 
-    @patch.dict('os.environ', {'PARAM1': 'param1', 'PARAM2': 'param2'})
+    @patch.dict('os.environ', {'PARAM1': 'param1', 'PARAM2': '1'})
     def test_create_with_prameters(self) -> None:
-        lambda_base_env_impl = LambdaBaseEnvImpl(set(['PARAM1', 'PARAM2']))
+        lambda_base_env_impl = LambdaBaseEnvImpl({'PARAM1': str, 'PARAM2': int})
+
         self.assertEqual(lambda_base_env_impl.get_parameter('PARAM1'), 'param1')
-        self.assertEqual(lambda_base_env_impl.get_parameter('PARAM2'), 'param2')
-        self.assertIsNotNone(lambda_base_env_impl)
+        self.assertTrue(isinstance(lambda_base_env_impl.get_parameter('PARAM1'), str))
+
+        self.assertEqual(lambda_base_env_impl.get_parameter('PARAM2'), 1)
+        self.assertTrue(isinstance(lambda_base_env_impl.get_parameter('PARAM2'), int))
