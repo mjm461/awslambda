@@ -5,7 +5,7 @@ __copyright__ = "Mark McClain"
 __license__ = "mit"
 
 from unittest import TestCase
-from common import LambdaBaseSsm
+from awslambda import LambdaBaseSsm
 from unittest.mock import patch
 import boto3
 from moto import mock_ssm

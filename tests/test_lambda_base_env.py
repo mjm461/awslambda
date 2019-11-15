@@ -5,7 +5,7 @@ __copyright__ = "Mark McClain"
 __license__ = "mit"
 
 from unittest import TestCase
-from common import LambdaBaseEnv
+from awslambda import LambdaBaseEnv
 from unittest.mock import patch
 import boto3
 
