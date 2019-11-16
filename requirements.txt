@@ -1,14 +1,2 @@
-# =============================================================================
-# DEPRECATION WARNING:
-#
-# The file `requirements.txt` does not influence the package dependencies and
-# will not be automatically created in the next version of PyScaffold (v4.x).
-#
-# Please have look at the docs for better alternatives
-# (`Dependency Management` section).
-# =============================================================================
-#
-# Add your pinned requirements so that they can be easily installed with:
-# pip install -r requirements.txt
 python-dateutil==2.8.0
 boto3==1.10.18

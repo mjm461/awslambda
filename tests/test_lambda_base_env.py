@@ -7,7 +7,6 @@ __license__ = "mit"
 from unittest import TestCase
 from awslambda import LambdaBaseEnv
 from unittest.mock import patch
-import boto3
 
 
 class LambdaBaseEnvImpl(LambdaBaseEnv):
